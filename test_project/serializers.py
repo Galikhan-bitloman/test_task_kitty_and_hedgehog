@@ -17,6 +17,13 @@ class UserSerializers(serializers.Serializer):
         return instance
 
 
+class ASerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = KittyandHedgehog
+        fields = ('species', 'name', 'owner_name', )
+
+
 class KittyandHedgehogSerializers(serializers.Serializer):
     species = serializers.CharField(max_length=100)
     name = serializers.CharField(max_length=100)

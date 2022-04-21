@@ -1,13 +1,14 @@
-from django.db.migrations import serializer
-from django.shortcuts import render
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.http import Http404
-from .models import *
-from .serializers import UserSerializers, KittyandHedgehogSerializers
+# std imports
+
+
 from rest_framework import status
 from rest_framework import mixins, generics
 from rest_framework.generics import get_object_or_404
+
+
+from test_task_kitty_and_hedgehog.models import User
+from test_task_kitty_and_hedgehog.serializers import UserSerializers, KittyandHedgehogSerializers
+
 
 """class UserView(APIView):
     def get(self, request, **data):
@@ -51,8 +52,9 @@ class KittyandHedgehogView(mixins.ListModelMixin, mixins.CreateModelMixin, gener
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
-    def peform_create(self, serializer):
-        user = get_object_or_404(User, user_name = self.request.data.get('test_project_user.id'))
+    def perform_create(self, serializer):
+        user_name = self.request.data.get('owner')
+        user = get_object_or_404(User, user_name=user_name)
         return serializer.get(user=user)
 
     def post(self, request, *args, **kwargs):

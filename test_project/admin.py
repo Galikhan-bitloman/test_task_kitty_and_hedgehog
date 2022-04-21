@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import *
+from test_task_kitty_and_hedgehog.models import User, KittyandHedgehog, Lot, Bet, SelectBet
 # Register your models here.
 
 admin.site.register(User)
 admin.site.register(KittyandHedgehog)
 admin.site.register(Lot)
 admin.site.register(Bet)
-admin.site.register(Select_bet)
+admin.site.register(SelectBet)
 
